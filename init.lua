@@ -176,6 +176,7 @@ require('lazy').setup({
         ignore_whitespace = false,
         virt_text_priority = 100,
       },
+      current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d>',
     },
   },
 
