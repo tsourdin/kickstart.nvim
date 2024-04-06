@@ -667,6 +667,13 @@ require('lazy').setup({
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
+    config = function()
+      require('tokyonight').setup {
+        on_colors = function(colors)
+          colors.comment = '#7878A0'
+        end,
+      }
+    end,
   },
 
   -- Highlight todo, notes, etc in comments
