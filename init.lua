@@ -172,7 +172,7 @@ require('lazy').setup({
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
-        delay = 1000,
+        delay = 0,
         ignore_whitespace = false,
         virt_text_priority = 100,
       },
@@ -787,6 +787,16 @@ require('lazy').setup({
     },
   },
 })
+
+vim.api.nvim_create_user_command("DiagnosticToggle", function()
+	local config = vim.diagnostic.config
+	local vt = config().virtual_text
+	config {
+		virtual_text = not vt,
+		underline = not vt,
+		signs = not vt,
+	}
+end, { desc = "toggle diagnostic" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
